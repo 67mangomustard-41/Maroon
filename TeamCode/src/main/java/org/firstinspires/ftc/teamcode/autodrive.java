@@ -120,7 +120,8 @@ public class autodrive extends LinearOpMode {
         shoot();
         drive_backward(1.0, 300);
         strafe_right(1.0, 800);
-        drive_backward(1.0, 900);
+        drive_backward(1.0, 850);
+        stop_robot();
     }
 }
 
