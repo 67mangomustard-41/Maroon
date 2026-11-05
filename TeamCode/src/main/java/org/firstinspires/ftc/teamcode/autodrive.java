@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Autonomous(name = "autodrive")
+@Autonomous(name = "Auto One")
 public class autodrive extends LinearOpMode {
     public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
     public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
@@ -81,24 +81,23 @@ public class autodrive extends LinearOpMode {
             windmillServo.setPower(0);
         }
         windmillServo.setPower(1);
-        sleep(4);
+        sleep(8000);
         windmillServo.setPower(0);
         launcher.setVelocity(LAUNCHER_TARGET_VELOCITY);
-
     }
 
     @Override
     public void runOpMode() {
         // Hardware Mapping
-        leftFrontDrive = hardwareMap.get(DcMotor.class, "leftFrontDrive");
-        rightFrontDrive = hardwareMap.get(DcMotor.class, "rightFrontDrive");
-        leftBackDrive = hardwareMap.get(DcMotor.class, "leftBackDrive");
-        rightBackDrive = hardwareMap.get(DcMotor.class, "rightBackDrive");
+        leftFrontDrive = hardwareMap.get(DcMotor.class, "left_front_drive");
+        rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");
+        leftBackDrive = hardwareMap.get(DcMotor.class, "left_back_drive");
+        rightBackDrive = hardwareMap.get(DcMotor.class, "right_back_drive");
         intake = hardwareMap.get(DcMotor.class, "intake");
         launcher = hardwareMap.get(DcMotorEx.class, "launcher");
         windmillServo = hardwareMap.get(CRServo.class, "windmillServo");
-        leftIntakeServo = hardwareMap.get(CRServo.class, "leftIntakeServo");
-        rightIntakeServo = hardwareMap.get(CRServo.class, "rightIntakeServo");
+        leftIntakeServo = hardwareMap.get(CRServo.class, "left_intake_servo");
+        rightIntakeServo = hardwareMap.get(CRServo.class, "right_intake_servo");
 
         // Reverse the left side so positive power moves the whole robot forward
         leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
@@ -118,20 +117,11 @@ public class autodrive extends LinearOpMode {
         launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         waitForStart();
+        shoot();
+        drive_backward(1.0, 300);
+        strafe_right(1.0, 800);
+        drive_backward(1.0, 1);
         drive_forward(1.0, 1);
-
-//        if (opModeIsActive()) {
-//            // Execute autonomous movement sequence
-//            drive_forward(1.0, 1000);
-//            turn_left(0.5, 1000);
-//            drive_forward(1.0, 1500);
-//            drive_backward(1.0, 1000);
-//
-//            // Main loop
-////            while (opModeIsActive()) {
-////                // Put loop blocks here
-////            }
-//        }
     }
 }
 
