@@ -27,6 +27,12 @@ public class autodrive extends LinearOpMode {
 
 
     // Helper function for driving forward
+
+    private void collect(double power, long time) {
+        intake.setPower(-power);
+        sleep(time);
+        stop_robot();
+    }
     public void drive_forward(double power, long time) {
         leftFrontDrive.setPower(power);
         leftBackDrive.setPower(power);
