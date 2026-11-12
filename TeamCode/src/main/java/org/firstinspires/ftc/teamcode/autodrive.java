@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Autonomous(name = "Auto One")
+@Autonomous(name = "shoot leave park")
 public class autodrive extends LinearOpMode {
     public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
     public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
@@ -124,9 +124,9 @@ public class autodrive extends LinearOpMode {
 
         waitForStart();
         shoot();
-        drive_backward(1.0, 300);
-        strafe_right(1.0, 800);
-        drive_backward(1.0, 850);
+        drive_forward(1.0, 300);
+        strafe_left(1.0, 800);
+        drive_forward(1.0, 850);
         stop_robot();
     }
 }
