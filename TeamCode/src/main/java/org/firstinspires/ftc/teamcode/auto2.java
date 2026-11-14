@@ -51,6 +51,22 @@ public class auto2 extends LinearOpMode {
         sleep(time);
         stop_robot();
     }
+    public void rotate_right(double power, long time) {
+        leftFrontDrive.setPower(power);
+        leftBackDrive.setPower(power);
+        rightFrontDrive.setPower(-power);
+        rightBackDrive.setPower(-power);
+        sleep(time);
+        stop_robot();
+    }
+    public void rotate_left(double power,long time) {
+        leftFrontDrive.setPower(-power);
+        leftBackDrive.setPower(-power);
+        rightFrontDrive.setPower(power);
+        rightBackDrive.setPower(power);
+        sleep(time);
+        stop_robot();
+    }
 
     // Helper function for strafing right
     public void strafe_right(double power, long time) {
@@ -126,11 +142,13 @@ public class auto2 extends LinearOpMode {
         shoot();
         drive_forward(1.0, 300);
         strafe_left(1.0, 800);
-        drive_backward(1.0, 500);
+        rotate_right(1, 1000);
+        drive_forward(1.0, 500);
         collect(1, 10000);
-        drive_forward(1,300);
+        drive_backward(1,300);
+        strafe_left(1,300);
+        drive_backward(1,800);
         strafe_right(1,300);
-        drive_forward(1,800);
         stop_robot();
     }
 }

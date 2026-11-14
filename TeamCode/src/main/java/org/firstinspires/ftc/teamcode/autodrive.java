@@ -52,6 +52,23 @@ public class autodrive extends LinearOpMode {
         stop_robot();
     }
 
+    public void rotate_right(double power, long time) {
+        leftFrontDrive.setPower(power);
+        leftBackDrive.setPower(power);
+        rightFrontDrive.setPower(-power);
+        rightBackDrive.setPower(-power);
+        sleep(time);
+        stop_robot();
+    }
+public void rotate_left(double power,long time) {
+        leftFrontDrive.setPower(-power);
+        leftBackDrive.setPower(-power);
+        rightFrontDrive.setPower(power);
+        rightBackDrive.setPower(power);
+        sleep(time);
+        stop_robot();
+}
+
     // Helper function for strafing right
     public void strafe_right(double power, long time) {
         leftFrontDrive.setPower(power);
